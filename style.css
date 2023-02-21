@@ -1,0 +1,210 @@
+:root {
+  --black: #3a3a3a;
+  --white: #fff;
+  --green: #00B74A;
+}
+
+.custom-line {
+  width: 100%;
+  height: 2px;
+  margin: 5px 0px;
+  background: #ad5389;
+  background: -webkit-linear-gradient(to right, #1266F1, #00B74A);
+  background: linear-gradient(to right, #1266F1, #00B74A);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-weight: 1000 !important;
+}
+
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  margin: 50px 0;
+  color: #3a3a3a;
+  font-size: 1.3rem !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+input[type="radio"] {
+  position: absolute;
+  left: -9999px;
+}
+
+
+.filters {
+  text-align: center;
+  margin-bottom: 2rem;
+  rem: 1.5rem;
+}
+
+.filters * {
+  display: inline-block;
+}
+
+.filters label {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+  border-radius: 2rem;
+  min-width: 50px;
+  line-height: normal;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.filters label:hover {
+  background: #00B74A;
+  color: #fff;
+}
+
+
+.posts {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.posts .post {
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.posts .post-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1266F1;
+}
+
+.posts .post-title:hover {
+  text-decoration: underline #1266F1;
+}
+
+.posts figcaption {
+  padding: 1rem;
+}
+
+.posts figcaption span {
+  position: absolute;
+  bottom: 0;
+}
+
+.posts figcaption li {
+  margin-bottom: 0.5rem;
+}
+
+.posts .post-categories {
+  margin-bottom: 0.75rem;
+  rem: 0.75rem;
+}
+
+.posts .post-categories * {
+  display: inline-block;
+}
+
+.posts .post-categories li {
+  margin-bottom: 0.2rem;
+}
+
+.posts .post-categories .tag {
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  border: 1.5px solid #00B74A;
+  color: #00B74A;
+  line-height: normal;
+  transition: all 0.1s;
+  font-weight: 700;
+}
+
+.posts .post-categories a:hover {
+  background: #00B74A;
+  color: #fff;
+}
+
+input[value="all"]:checked ~ .filters [for="all"],
+input[value="environment"]:checked ~ .filters [for="environment"],
+input[value="agriculture"]:checked ~ .filters [for="agriculture"],
+input[value="industry"]:checked ~ .filters [for="industry"],
+input[value="journal"]:checked ~ .filters [for="journal"],
+input[value="news"]:checked ~ .filters [for="news"],
+input[value="blog"]:checked ~ .filters [for="blog"],
+input[value="methods"]:checked ~ .filters [for="methods"],
+input[value="visuals"]:checked ~ .filters [for="visuals"],
+input[value="data"]:checked ~ .filters [for="data"],
+input[value="environnement"]:checked ~ .filters [for="environnement"],
+input[value="industrie"]:checked ~ .filters [for="industrie"],
+input[value="revue"]:checked ~ .filters [for="revue"],
+input[value="nouvelles"]:checked ~ .filters [for="nouvelles"],
+input[value="mxE9thodes"]:checked ~ .filters [for="mxE9thodes"],
+input[value="visuels"]:checked ~ .filters [for="visuels"],
+input[value="donnxE9es"]:checked ~ .filters [for="donnxE9es"],
+input[value="statcan"]:checked ~ .filters [for="statcan"],
+input[value="event"]:checked ~ .filters [for="event"],
+input[value="xE9vxE9nement"]:checked ~ .filters [for="xE9vxE9nement"],
+input[value="training"]:checked ~ .filters [for="training"],
+input[value="formation"]:checked ~ .filters [for="formation"]{
+  background: #00B74A;
+  color: #fff;
+}
+
+[value="all"]:checked ~ .posts [data-category] {
+  display: block;
+}
+
+input[value="environment"]:checked ~ .posts .post:not([data-category~="environment"]),
+input[value="agriculture"]:checked ~ .posts .post:not([data-category~="agriculture"]),
+input[value="industry"]:checked ~ .posts .post:not([data-category~="industry"]),
+input[value="journal"]:checked ~ .posts .post:not([data-category~="journal"]),
+input[value="news"]:checked ~ .posts .post:not([data-category~="news"]),
+input[value="blog"]:checked ~ .posts .post:not([data-category~="blog"]),
+input[value="methods"]:checked ~ .posts .post:not([data-category~="methods"]),
+input[value="visuals"]:checked ~ .posts .post:not([data-category~="visuals"]),
+input[value="data"]:checked ~ .posts .post:not([data-category~="data"]),
+input[value="environnement"]:checked ~ .posts .post:not([data-category~="environnement"]),
+input[value="industrie"]:checked ~ .posts .post:not([data-category~="industrie"]),
+input[value="revue"]:checked ~ .posts .post:not([data-category~="revue"]),
+input[value="nouvelles"]:checked ~ .posts .post:not([data-category~="nouvelles"]),
+input[value="donnxE9es"]:checked ~ .posts .post:not([data-category~="donnxE9es"]),
+input[value="blog"]:checked ~ .posts .post:not([data-category~="blog"]),
+input[value="mxE9thodes"]:checked ~ .posts .post:not([data-category~="mxE9thodes"]),
+input[value="visuels"]:checked ~ .posts .post:not([data-category~="visuels"]),
+input[value="statcan"]:checked ~ .posts .post:not([data-category~="statcan"]),
+input[value="event"]:checked ~ .posts .post:not([data-category~="event"]),
+input[value="xE9vxE9nement"]:checked ~ .posts .post:not([data-category~="xE9vxE9nement"]),
+input[value="training"]:checked ~ .posts .post:not([data-category~="training"]),
+input[value="formation"]:checked ~ .posts .post:not([data-category~="formation"]){
+  display: none;
+}
+
+
+@media screen and (max-width: 900px) {
+  .posts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  html {
+    rem: 1rem;
+  }
+
+  .posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,143 @@
+---
+output: 
+  html_document:
+    css: ["~/geonewsletter/static/external/MDB-Free_4.19.1/css/bootstrap.min.css", "~/geonewsletter/static/external/MDB-Free_4.19.1/css/mdb.min.css", "~/geonewsletter/style.css"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd('~/geonewsletter')
+lang <- "en"
+issue <- "23-Feb"
+```
+
+```{r echo=FALSE, results='asis'}
+if (lang == 'en') {
+    issueLang <- 'Issue'
+    cat(paste("<div class='row p-2 white border-bottom-primary'><h1 class='col-10'>GeoNewsletter!</h1><div class='col-12'>
+<i>Economic Statistics Field Geomatics Network</i><a href='https://gcdocs.gc.ca/statcan/llisapi.dll/fetch/12048356/22766474/-/index-fr.html?nodeid=17080718&vernum=-2' class=' float-right'>Français</a>
+</div></div>
+<div>
+<p>Designed for Field 5 by the Data Exploration and Integration Lab, approximately each month the latest geomatics publications, technical resources, developments and applications will be delivered.</p>
+<p class='note note-primary'>As we strive to cater this newsletter for Field 5, please feel free to reach out to Cal Giunta or Marina Smailes with specific topics/themes to include in future releases.
+</p>
+</div>
+<div class='custom-line'></div>
+<input type='radio' id='all' name='categories' value='all' checked>
+<input type='radio' id='agriculture' name='categories' value='agriculture'>
+<input type='radio' id='environment' name='categories' value='environment'>
+<input type='radio' id='industry' name='categories' value='industry'>
+<input type='radio' id='blog' name='categories' value='blog'>
+<input type='radio' id='journal' name='categories' value='journal'>
+<input type='radio' id='news' name='categories' value='news'>
+<input type='radio' id='methods' name='categories' value='methods'>
+<input type='radio' id='visuals' name='categories' value='visuals'>
+<input type='radio' id='data' name='categories' value='data'>
+<input type='radio' id='statcan' name='categories' value='statcan'>
+<input type='radio' id='event' name='categories' value='event'>
+<input type='radio' id='training' name='categories' value='training'>
+<ol class='filters'>
+<li><label for='all'>all</label></li>
+<li><label for='agriculture'>agriculture</label></li>
+<li><label for='environment'>environment</label></li>
+<li><label for='industry'>industry</label></li>
+<li><label for='blog'>blog</label></li>
+<li><label for='journal'>journal</label></li>
+<li><label for='news'>news</label></li>
+<li><label for='methods'>methods</label></li>
+<li><label for='visuals'>visuals</label></li>
+<li><label for='data'>data</label></li>
+<li><label for='statcan'>statcan</label></li>
+<li><label for='event'>event</label></li>
+<li><label for='training'>training</label></li>
+</ol>", "<h1>Issue ", issue,"</h1>"))
+} else {
+  issueLang <- 'Numéro'
+  cat(paste("<div class='row p-2 white border-bottom-primary'><h1 class='col-10'>Bulletin d’information géo !</h1><div class='col-12'>
+<i>Réseau géomatique du Secteur de la statistique économique</i><a href='https://gcdocs.gc.ca/statcan/llisapi.dll/fetch/12048356/22766474/-/index-en.html?nodeid=17074585&vernum=-2' class=' float-right'>English</a>
+</div></div>
+<div>
+<p>Conçu pour le Secteur 5 par le Laboratoire d'exploration et d'intégration des données, il vous présente environ chaque mois les dernières publications, ressources techniques, développements et applications en matière de géomatique.</p>
+<p class='note note-primary'>Comme nous nous efforçons d'adapter ce bulletin d'information au Secteur 5, n'hésitez pas à contacter Cal Giunta ou Marina Smailes pour leur proposer des sujets/thèmes spécifiques à inclure dans les prochaines versions.
+</p>
+</div>
+<div class='custom-line'></div>
+<input type='radio' id='all' name='categories' value='all' checked>
+<input type='radio' id='agriculture' name='categories' value='agriculture'>
+<input type='radio' id='environnement' name='categories' value='environnement'>
+<input type='radio' id='industrie' name='categories' value='industrie'>
+<input type='radio' id='blog' name='categories' value='blog'>
+<input type='radio' id='revue' name='categories' value='revue'>
+<input type='radio' id='nouvelles' name='categories' value='nouvelles'>
+<input type='radio' id='méthodes' name='categories' value='méthodes'>
+<input type='radio' id='visuels' name='categories' value='visuels'>
+<input type='radio' id='données' name='categories' value='données'>
+<input type='radio' id='statcan' name='categories' value='statcan'>
+<input type='radio' id='événement' name='categories' value='événement'>
+<input type='radio' id='formation' name='categories' value='formation'>
+<ol class='filters'>
+<li><label for='all'>tout</label></li>
+<li><label for='agriculture'>agriculture</label></li>
+<li><label for='environnement'>environnement</label></li>
+<li><label for='industrie'>industrie</label></li>
+<li><label for='blog'>blog</label></li>
+<li><label for='revue'>revue</label></li>
+<li><label for='nouvelles'>nouvelles</label></li>
+<li><label for='méthodes'>méthodes</label></li>
+<li><label for='visuels'>visuels</label></li>
+<li><label for='données'>données</label></li>
+<li><label for='statcan'>statcan</label></li>
+<li><label for='événement'>événement</label></li>
+<li><label for='formation'>formation</label></li>
+</ol>", "<h1>Numéro ", issue,"</h1>"))
+}
+
+articles <- read.csv('~/geonewsletter/Articles.csv', encoding="latin1")
+#<div class='tags col-3 text-center'>%s</div>
+template <- "
+<li class='post card' data-category='%s'>
+<article>
+<figure>
+<figcaption>
+<ol class='post-categories'>
+%s
+</ol>
+<h2 class='post-title'>
+<a href='%s' target='_blank'>%s</a>
+</h2>
+<li>%s</li>
+<span>%s: %s</span>
+</figcaption>
+</figure>
+</article>
+</li>
+"
+
+tag <- "<li class='tag'>%s</li>"
+archives <- ''
+
+# iterate through rows and record for the article
+cat("<ol class='posts'>")
+for (i in seq(nrow(articles))) {
+  current <- articles[i, ]
+  if (current$lang == lang) {
+    tags_list <- as.list(strsplit(as.character(current$tags), '[,]')[[1]])
+    test <- ''
+    list <- ''
+    for (i in 1:length(tags_list)) {
+      item <- trimws(tags_list[[i]][1])
+      list <- paste(list, item, sep=' ')
+      tag_elm <- sprintf(tag, item)
+      test <- paste(test, tag_elm)
+    }
+    list <- trimws(list, "l")
+    if (current$issue == issue) {
+      cat(sprintf(template, list, test, current$source, current$title, current$description, issueLang, current$issue))
+    } else {
+      archives <- paste(sprintf(template, list, test, current$source, current$title, current$description, issueLang,current$issue), archives)
+    }
+  }
+}
+cat("</ol>")
+cat(paste("<h1>Archives</h1><ol class='posts'>",archives, "</ol></div>"))
+```
