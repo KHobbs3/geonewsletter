@@ -1,11 +1,5 @@
----
-title: "Updating Geonewsletter"
-output: pdf_document
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+# Updating Geonewsletter
 
 1. Move Articles.csv to minio 
 2. Copy Articles.csv to server
